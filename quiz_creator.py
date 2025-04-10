@@ -1,10 +1,11 @@
 # Assignment No.09: Quiz Creator
 
+file = input("Enter a file name for your quiz file (without its extenstion): ") + ".txt" 
 
 print("--------QUIZ MAKER--------")
 #1. Get the questions that the user wants (I will use while loop here also)
 
-with open("quiz.txt", "a") as f:  #3. Get the file of the questions using while loop
+with open(file, "a") as f:  #3. Get the file of the questions using while loop
     while True:
         question = input("Enter question (or enter 'quit' to exit): ")
         if question.lower() == "quit":
@@ -24,7 +25,14 @@ with open("quiz.txt", "a") as f:  #3. Get the file of the questions using while 
             f.write(f"{chr(97+i)}) {option}\n")
         f.write(f"Correct: {correct}\n\n")
 
-        print("Question Saved!\n")
+        while True:
+            choice = input("Add another question? (y/n): ").lower()
+            if choice in ["y", "n"]:
+                break
+            print("Please enter 'y' or 'n'")
 
-print("\nAll questions saved to quiz.txt")
+        if choice == "n":
+            break
+
+print(f"\nAll questions saved to {file}")
 
