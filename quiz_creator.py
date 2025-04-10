@@ -14,6 +14,17 @@ with open(file_name, "a") as file:      #3. Get the file of the questions using 
         options = []            #2. Get the options that the user will put in the question and the correct answer (I will use while loop here also)
         for letter in ["a", "b", "c", "d"]:
             options.append(input(f"Enter option {letter}: "))
+        
+        while True:
+            correct = input("Enter the correct answer/s (can be single letter like 'a', multiple like 'a and b', 'all', or 'none' if no correct answer): ").lower()
+
+            if correct == "none":
+                correct == "none"
+                break
+
+            if correct == "all":
+                correct == "all"
+                break
 
 #Addition: Since I realized that there are some cases where the quiz/quizzes sometimes got a two correct answer or three or even all answers are correct or no answer are correct, I want to make it that the user will input if there will be 2 or more correct answer or no correct answer.
 
