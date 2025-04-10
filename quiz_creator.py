@@ -2,7 +2,7 @@
 
 file = input("Enter a file name for your quiz file (without its extenstion): ") + ".txt" 
 
-print("--------QUIZ MAKER--------")
+print("\n--------QUIZ MAKER--------")
 #1. Get the questions that the user wants (I will use while loop here also)
 
 with open(file, "a") as f:  #3. Get the file of the questions using while loop
