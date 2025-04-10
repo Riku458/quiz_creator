@@ -14,29 +14,45 @@ with open(file_name, "a") as file:      #3. Get the file of the questions using 
         options = []            #2. Get the options that the user will put in the question and the correct answer (I will use while loop here also)
         for letter in ["a", "b", "c", "d"]:
             options.append(input(f"Enter option {letter}: "))
-        
+                                #Addition: Since I realized that there are some cases where the quiz/quizzes sometimes got a two correct answer or three or even all answers are correce or no answer are correct, I tried to make it that the user will input if there will be 2 or more correct answer or no correct answer.
         while True:
             correct = input("Enter the correct answer/s (can be single letter like 'a', multiple like 'a and b', 'all', or 'none' if no correct answer): ").lower()
 
             if correct == "none":
-                correct == "none"
+                final_answer = "none."
                 break
 
             if correct == "all":
-                correct == "all"
+                final_answer = "all answers are correct."
                 break
 
-#Addition: Since I realized that there are some cases where the quiz/quizzes sometimes got a two correct answer or three or even all answers are correct or no answer are correct, I want to make it that the user will input if there will be 2 or more correct answer or no correct answer.
+            valid_answers = []
+            for word in correct.replace(',', ' ').split():
+                if word in ["a", "b", "c", "d"] and word not in valid_answers:
+                    valid_answers.append(word)
 
-        correct = input("Correct answer (a-d): ").lower()
-        while correct not in ["a", "b", "c", "d"]:
-            print("Please enter a, b, c, or d")
-            correct = input("Correct answer (a-d): ").lower()
+            valid_answers.sort()
 
-        file.write(f"Q: {question}\n")
+            if not valid_answers:
+                print("Enter at least one valid answer as (a-d), 'all', or 'none'. Also check your input if it is correct according to the instruction given.")
+                continue
+            
+            if len(valid_answers) > 3:
+                print("It will make all the options to be correct. Put 'all' if you want all the answers to be correct.")
+                continue
+
+            if len(valid_answers) == 1:
+                final_answer = valid_answers[0]
+            elif len(valid_answers) == 2:
+                final_answer = " and ".join(valid_answers)
+            else:
+                final_answer = ", ".join(valid_answers[:-1]) + ", and " + valid_answers[-1]
+            break
+
+        file.write(f"Question: {question}\n")
         for i, option in enumerate(options):
             file.write(f"{chr(97+i)}) {option}\n")
-        file.write(f"Correct: {correct}\n\n")
+        file.write(f"Correct: {final_answer}\n\n")
 
         while True:
             choice = input("Add another question? (y/n): ").lower()
@@ -48,4 +64,3 @@ with open(file_name, "a") as file:      #3. Get the file of the questions using 
             break
 
 print(f"\nAll questions saved to {file_name}")
-

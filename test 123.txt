@@ -1,0 +1,35 @@
+Question: q1
+a) 1
+b) 2
+c) 3
+d) 4
+Correct: a
+
+Question: q1
+a) 1
+b) 2
+c) 3
+d) 4
+Correct: all answers are correct
+
+Question: q2
+a) 1
+b) 2
+c) 3
+d) 4
+Correct: a, b, and d
+
+Question: q3
+a) 1
+b) 2
+c) 3
+d) 4
+Correct: a, c, and d
+
+Question: q4
+a) 1
+b) 23
+c) 3
+d) 4
+Correct: a, b, and d
+
