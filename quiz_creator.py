@@ -13,4 +13,8 @@ while True:
     for letter in ["a", "b", "c", "d"]:
         option.append(input(f"Enter option {letter}: "))
 
+    correct = input("Correct answer (a-d): ").lower()
+    while correct not in ["a", "b", "c", "d"]:
+        print("Please enter a, b, c, or d")
+        correct = input("Correct answer (a-d): ").lower()
 #3. Get the file of the questions using while loop
