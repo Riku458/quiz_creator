@@ -15,6 +15,8 @@ with open(file_name, "a") as file:      #3. Get the file of the questions using 
         for letter in ["a", "b", "c", "d"]:
             options.append(input(f"Enter option {letter}: "))
 
+#Addition: Since I realized that there are some cases where the quiz/quizzes sometimes got a two correct answer or three or even all answers are correct or no answer are correct, I want to make it that the user will input if there will be 2 or more correct answer or no correct answer.
+
         correct = input("Correct answer (a-d): ").lower()
         while correct not in ["a", "b", "c", "d"]:
             print("Please enter a, b, c, or d")
