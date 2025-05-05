@@ -203,3 +203,10 @@ while True:
 
         except FileNotFoundError:
             print(f"Error: File '{quiz_filename}' not found!")
+
+    elif user_choice == "3":
+        print("Thank you, Goodbye!")
+        break
+
+    else:
+        print("Invalid choice. Please enter 1, 2, or 3")
