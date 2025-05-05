@@ -1,0 +1,42 @@
+Question: tq1
+a) 1
+b) 2
+c) 3
+d) 4
+Correct: a
+
+Question: tq2
+a) 
+b) 2
+c) 3
+d) 4
+Correct: none.
+
+Question: tq3
+a) 1
+b) 2
+c) 3
+d) 4
+Correct: a and b
+
+Question: tq4
+a) 1
+b) 2
+c) 3
+d) 4
+Correct: all answers are correct.
+
+Question: tq5
+a) 1
+b) 2
+c) 3
+d) 4
+Correct: a and d
+
+Question: tq6
+a) 1
+b) 2
+c) 3
+d) 4
+Correct: a, b, and d
+

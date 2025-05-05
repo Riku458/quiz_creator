@@ -124,7 +124,7 @@ while True:
             for question_number, question_data in enumerate(
                 selected_quiz_question, 1
             ):
-                print(f"Question {question_number}: {question_data["question_test"]}")
+                print(f"Question {question_number}: {question_data["question_text"]}")
                 for option_letter, option_text in question_data["question_options"]:
                     print(f"{option_letter}) {option_text}")
 
