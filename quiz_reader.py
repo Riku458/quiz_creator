@@ -75,3 +75,40 @@ while True:
                     break
 
         print(f"Quiz saved to {quiz_filename}")
+
+    elif user_choice == "2":
+        quiz_filename = input(
+            "Enter quiz file name (without extension): "
+        ) + ".txt"
+
+        try:
+            all_questions = []
+            current_qustion_data = []
+
+            with open(quiz_filename, "r") as quiz_file:
+                for file_line in quiz_file:
+                    file_line = file_line.strip()
+                    if file_line.startswith("Question: "):
+                        if current_qustion_data:
+                            all_questions.append(current_qustion_data)
+                        current_qustion_data = {
+                            "question_text": file_line[10:],
+                            "question_options": [],
+                            "correct_answer": ""
+                        }
+                    elif (file_line and file_line[0] in ['a', 'b', 'c', 'd']
+                          and ') ' in file_line):
+                        option_letter = file_line[0]
+                        option_text = file_line[3:]
+                        current_qustion_data['question_options'].append(
+                            (option_letter, option_text)
+                        )
+                    elif file_line.startswith("Correct: "):
+                        current_qustion_data['correct_answer'] = file_line[9:]
+
+                if current_qustion_data:
+                    all_questions.append(current_qustion_data)
+
+            if not all_questions:
+                print("No questions found in the file!")
+                continue
