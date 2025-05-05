@@ -112,3 +112,11 @@ while True:
             if not all_questions:
                 print("No questions found in the file!")
                 continue
+
+            user_score = 0
+            random.shuffle(all_questions)
+            selected_quiz_question = all_questions
+            user_question_responses = []
+
+            print("\n-------- QUIZ TIME --------")
+            print(f"Answer {len(selected_quiz_question)} question:\n")
