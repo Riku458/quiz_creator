@@ -120,3 +120,23 @@ while True:
 
             print("\n-------- QUIZ TIME --------")
             print(f"Answer {len(selected_quiz_question)} question:\n")
+
+            for question_number, question_data in enumerate(
+                selected_quiz_question, 1
+            ):
+                print(f"Question {question_number}: {question_data["question_test"]}")
+                for option_letter, option_text in question_data["question_options"]:
+                    print(f"{option_letter}) {option_text}")
+
+                while True:
+                    user_response = input("Your answer: ").lower()
+                    valid_responses = ["a", "b", "c", "d", "none", "all"]
+                    if (user_response in valid_responses or 
+                            all(char in ["a", "b", "c", "d",] for char in
+                                user_response.replace(",", "").replace(" and ", "").split())):
+                        break
+                    print("Invalid input! Use a-d, 'none', or 'all'")
+
+                user_question_responses.append((question_data, user_response))
+                print()
+                
