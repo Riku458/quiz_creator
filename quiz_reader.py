@@ -139,4 +139,67 @@ while True:
 
                 user_question_responses.append((question_data, user_response))
                 print()
-                
+
+            print("\n-------- RESULTS --------")
+            for response_number, (question_data, user_response) in enumerate(
+                user_question_responses, 1
+            ):
+                stored_correct_answer = question_data['correct_answer'].lower().rstrip('.')
+                is_answer_correct = False
+
+                if stored_correct_answer == "none":
+                    is_answer_correct = (user_response == "none")
+                elif stored_correct_answer == "all answers are correct":
+                    is_answer_correct = (user_response == "all")
+                else:
+                    # Parse correct answers
+                    correct_answer_parts = []
+                    if " and " in stored_correct_answer:
+                        answer_parts = stored_correct_answer.split(" and ")
+                    elif ", and " in stored_correct_answer:
+                        answer_parts = stored_correct_answer.split(", and ")
+                    elif ", " in stored_correct_answer:
+                        answer_parts = stored_correct_answer.split(", ")
+                    else:
+                        answer_parts = [stored_correct_answer]
+
+                    for part in answer_parts:
+                        if part in ['a', 'b', 'c', 'd']:
+                            correct_answer_parts.append(part)
+
+                    # Parse user answers
+                    user_answer_parts = []
+                    if " and " in user_response:
+                        user_answer_parts = user_response.split(" and ")
+                    elif ", and " in user_response:
+                        user_answer_parts = user_response.split(", and ")
+                    elif ", " in user_response:
+                        user_answer_parts = user_response.split(", ")
+                    else:
+                        user_answer_parts = [user_response]
+
+                    cleaned_user_answers = [
+                        ans for ans in user_answer_parts
+                        if ans in ['a', 'b', 'c', 'd']
+                    ]
+                    is_answer_correct = (
+                        sorted(cleaned_user_answers) == sorted(correct_answer_parts)
+                    )
+
+                print(f"\nQuestion {response_number}: {question_data['question_text']}")
+                for option_letter, option_text in question_data['question_options']:
+                    print(f"{option_letter}) {option_text}")
+                print(f"Your answer: {user_response}")
+                print(f"Correct answer: {question_data['correct_answer']}")
+                print("Result: " + ("CORRECT" if is_answer_correct else "INCORRECT"))
+
+                if is_answer_correct:
+                    user_score += 1
+
+            print(
+                f"\nFINAL SCORE: {user_score}/{len(selected_quiz_question)} "
+                f"({user_score/len(selected_quiz_question):.0%})"
+            )
+
+        except FileNotFoundError:
+            print(f"Error: File '{quiz_filename}' not found!")
